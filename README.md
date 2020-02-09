@@ -1,3 +1,5 @@
+# Running jupyter notebooks via docker on localhost
+
 How to run the favor docker container on localhost.  This is based on https://github.com/jupyter/docker-stacks.
 
 To run the docker image (juypter notebook), use the following command in a terminal.

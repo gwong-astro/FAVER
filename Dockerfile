@@ -8,7 +8,7 @@
 #
 #
 # Execution:
-# docker build -f /Users/won10d/Documents/FAVOR/containers/FAVOR.txt .
+# docker build -f /Users/user1/Documents/FAVOR/containers/Dockerfile .
 #
 ########################################################
 FROM jupyter/datascience-notebook

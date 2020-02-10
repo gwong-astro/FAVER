@@ -29,3 +29,7 @@ sudo singularity build --tmpdir /extension/tmp/ favor_singularity.sif docker://g
 
 where /extension/tmp/ is the location you wish to save the container.
 
+## Running singularity on HPC server
+
+sudo singularity run -B $PWD:/opt/notebooks —writable dir_favor
+

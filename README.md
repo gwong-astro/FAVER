@@ -1,3 +1,6 @@
+# General Introduction
+FAVER (Framework for Analysis and Visualisation of Enormous datasets Remotely) designed for researchers to transparently remotely connect to a HPC server and execute their scripts.  This repository is an initial step to that path where using containers, a reseracher and develop locally on their machine and then transfer the script to a HPC facility and still work in the same environment.  The container addresses the major requirements outlined by a client in regards to importable packages and data visualisation.
+
 # Container description
 
 Description of the container is found in the following location https://hub.docker.com/repository/docker/gwongastro/favor/general
@@ -41,9 +44,40 @@ sudo singularity build --tmpdir /extension/tmp/ favor_singularity.sif docker://g
 
 where /extension/tmp/ is the location temporary location the container.
 
-## Running singularity and interact with a local directory
+## Running singularity locally and interact with a local directory
 
 ```
 sudo singularity run -B $PWD:/opt/notebooks —writable dir_favor
 ```
+
+## Running Singularity remotely on a cloud service and connecting
+
+For this example, I am using the Pawsey server Nimbus (cloud service) with ubuntu installed.  On the cloud service run the following command:
+
+```
+singularity exec faver_singularityContainer.sif jupyter notebook --no-browser --port=8889
+```
+This will execute the jupyter notebook command with the option of not opening a browser (on the cloud service) and port forward to a given number (in this case port 8889, default is 8888).
+
+On your local terminal you will be creating a ssh tunnel, which will be using one of the following commands:
+```
+ssh -N -f -L localhost:8000:127.0.0.1:8889 ubuntu@123.456.89.10
+
+or
+
+ssh -i sshKey.pem -N -f -L localhost:8000:127.0.0.1:8889 ubuntu@123.456.89.10
+```
+
+The difference between the two commands is the ssh key, this can be either saved in your ssh profile (recommended) or you can specify the ssh key location.
+
+After running singularity to run jupyter notebook and creating the ssh tunnel, open a browser, copy the url provided from the singularity command, and modify the port number to the your local connection e.g.
+
+```
+Output from Singularity
+http://127.0.0.1:8889/?token=SOME_PROVIDED_TOKEN
+
+Change to the 8889 to 8000, and then paste in the web browser.
+http://127.0.0.1:8000/?token=SOME_PROVIDED_TOKEN
+```
+
 

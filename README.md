@@ -16,20 +16,20 @@ docker run --rm -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v "$PWD":/home/jovyan/wo
 
 
 
-# Converting docker container to Singularity container
+# Converting docker container to a Singularity container
 
-To run the jupyter notebook service on HPC systems such as Pawsey servers Magnus and Nimbus you will need to run the following command:
+The following command can be used on Linux systems or HPC servers such as Pawsey servers Magnus and Nimbus.
+To run the jupyter notebook you will need to convert the Docker image to a Singularity image through the following command:
 
 sudo singularity build favor_singularityContainer.sif docker://gwongastro/favor:version2
 
-It is assumed that singularity is already installed on your Nimbus instance.
-If you need to specify the directory to write the container to use the following command:
+It is assumed that singularity is already installed, if not check the following link https://sylabs.io/guides/3.5/admin-guide/installation.html.  If you need to specify the directory to write the container to use the following command:
 
 sudo singularity build --tmpdir /extension/tmp/ favor_singularity.sif docker://gwongastro/favor:version2
 
 where /extension/tmp/ is the location you wish to save the container.
 
-## Running singularity on HPC server
+## Running singularity and interact with a local directory
 
 sudo singularity run -B $PWD:/opt/notebooks —writable dir_favor
 

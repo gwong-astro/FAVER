@@ -54,7 +54,9 @@ Where dir_faver is the location of the local directory.
 
 ## Running Singularity remotely on a cloud service and connecting
 
-For this example, I am using the Pawsey server Nimbus (cloud service) with ubuntu installed.  On the cloud service run the following command:
+For this example, I am using the Pawsey server Nimbus (cloud service) with ubuntu installed.  This will more effective you use screen or tmux to push the jupyter notebook service to the background.  
+
+On the cloud service run the following command:
 
 ```
 singularity exec faver_singularityContainer.sif jupyter notebook --no-browser --port=8889

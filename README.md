@@ -33,13 +33,13 @@ The following command can be used on Linux systems or HPC servers such as Pawsey
 To run the jupyter notebook you will need to convert the Docker image to a Singularity image through the following command:
 
 ```
-sudo singularity build favor_singularityContainer.sif docker://gwongastro/favor:version2
+sudo singularity build faver_singularityContainer.sif docker://gwongastro/faver:version1
 ```
 
 The conversion requires a bit of space, depends of the size of the image, if you need to specify a temporary directory to use for build run the following:
 
 ```
-sudo singularity build --tmpdir /extension/tmp/ favor_singularity.sif docker://gwongastro/favor:version2
+sudo singularity build --tmpdir /extension/tmp/ faver_singularity.sif docker://gwongastro/faver:version1
 ```
 
 where /extension/tmp/ is the location temporary location the container.
@@ -47,8 +47,10 @@ where /extension/tmp/ is the location temporary location the container.
 ## Running singularity locally and interact with a local directory
 
 ```
-sudo singularity run -B $PWD:/opt/notebooks —writable dir_favor
+sudo singularity run -B $PWD:/opt/notebooks —writable dir_faver
 ```
+
+Where dir_faver is the location of the local directory.
 
 ## Running Singularity remotely on a cloud service and connecting
 
